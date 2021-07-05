@@ -5,7 +5,7 @@ import {faPlusSquare, faMinusSquare, faTrash} from '@fortawesome/free-solid-svg-
 class Habit extends Component {
     state={
         count:0,
-    };
+    }
     handleIncrement=()=>{
         this.setState({count:this.state.count+1})
     }
@@ -14,12 +14,13 @@ class Habit extends Component {
         this.setState({count:count < 0 ? 0 : count})
     }
     handleDelete=(e)=>{
-        
+        console.log('delete', this.props.habit.id)
+        this.props.onDelete(this.props.habit.id)
     }
     render() {
         return (
            <li>
-            <h1>Reading</h1>
+            <h1>{this.props.habit.title}</h1>
             <p>{this.state.count}</p>
             <button className="increment">
                 <FontAwesomeIcon icon={faPlusSquare} onClick={this.handleIncrement}/>
